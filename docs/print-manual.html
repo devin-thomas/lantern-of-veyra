@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="lantern-mark.svg" type="image/svg+xml">
+  <title>Lantern of Veyra | Player's Field Manual</title>
+  <link rel="stylesheet" href="manual-print.css">
+</head>
+<body>
+  <main class="manual-shell">
+    <section class="manual-page cover">
+      <div class="cover-inner">
+        <img class="cover-art" src="../res/hero.png" alt="Pixel hero sprite">
+        <img class="cover-mark" src="lantern-mark.svg" alt="Lantern of Veyra mark">
+        <h1><span>Lantern</span><em>of Veyra</em></h1>
+        <p>The Last Light / Player's Field Manual</p>
+        <div class="cover-meta">
+          <span>For Sega Genesis / Mega Drive</span>
+          <span>One hero / one dungeon / one way home</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="manual-page">
+      <div class="running-head"><span>Lantern of Veyra</span><span>01 / The Long Dusk</span></div>
+      <h2>The Long Dusk</h2>
+      <div class="rule"></div>
+      <p class="lead">The night has a lock. Find the key. Carry the light home.</p>
+      <p>Veyra was built where three old roads meet. For generations, its watchfires were fed by a lantern recovered from the ruins beneath the hill. Then the lantern went dark.</p>
+      <p>The darkness did not pass with the morning. It stayed. Crops stopped growing, travelers stopped coming, and the town learned to measure time by the coldness of the sky.</p>
+      <p>The old Guide believes the lantern's heart is still below the sealed Stonewake dungeon. The ruin is guarded by an Ash Dragon and closed behind a rune gate. You are the one traveler willing to take the road down, find the lantern relic, and bring its light back to Veyra.</p>
+      <div class="callout">The Guide gives the first direction. The Watcher tells you when you are ready for deeper halls.</div>
+      <div class="page-split">
+        <div>
+          <h3>Start here</h3>
+          <ol>
+            <li>Press A, B, C, or START on NEW GAME.</li>
+            <li>Walk close to the `G GUIDE` marker.</li>
+            <li>Press A to accept the quest.</li>
+            <li>Follow the road to the blue portal.</li>
+          </ol>
+        </div>
+        <div>
+          <h3>Your first ledger</h3>
+          <table>
+            <tr><th>Measure</th><th>Value</th></tr>
+            <tr><td>Level</td><td>1</td></tr>
+            <tr><td>HP / MP</td><td>20 / 20 and 8 / 8</td></tr>
+            <tr><td>ATK / DEF</td><td>7 / 4 with starting gear</td></tr>
+            <tr><td>Gold / Potions</td><td>0 / 2</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="running-foot"><span>Homebrew field manual</span><span>2</span></div>
+    </section>
+
+    <section class="manual-page">
+      <div class="running-head"><span>Lantern of Veyra</span><span>02 / Controls</span></div>
+      <h2>Every button has a job.</h2>
+      <div class="rule"></div>
+      <div class="page-split">
+        <div>
+          <h3>Field</h3>
+          <table>
+            <tr><th>Input</th><th>Action</th></tr>
+            <tr><td>D-pad</td><td>Walk in four directions</td></tr>
+            <tr><td>A</td><td>Talk, inspect, open, or enter a battle action</td></tr>
+            <tr><td>B</td><td>Open pause / status</td></tr>
+            <tr><td>START</td><td>Save your adventure</td></tr>
+          </table>
+          <p>The field uses an 8x8 tile grid. The hero moves two pixels at a time, and the map scrolls near the screen edge.</p>
+          <h3>Pause / status</h3>
+          <table>
+            <tr><th>Input</th><th>Action</th></tr>
+            <tr><td>A</td><td>Inventory</td></tr>
+            <tr><td>C</td><td>Settings</td></tr>
+            <tr><td>B</td><td>Resume</td></tr>
+            <tr><td>START</td><td>Close</td></tr>
+          </table>
+        </div>
+        <div>
+          <h3>Battle</h3>
+          <p>Use the D-pad to move the cursor. Press A, B, C, or START to confirm the highlighted action.</p>
+          <table>
+            <tr><th>Action</th><th>Result</th></tr>
+            <tr><td>FIGHT</td><td>Strike with current attack</td></tr>
+            <tr><td>SKILL</td><td>Choose Heal or Power Strike</td></tr>
+            <tr><td>ITEM</td><td>Use one Potion</td></tr>
+            <tr><td>GUARD</td><td>Halve the next enemy hit</td></tr>
+            <tr><td>RUN</td><td>Try to escape a normal encounter</td></tr>
+          </table>
+          <h3>Inventory and settings</h3>
+          <p>In Inventory, use UP and DOWN to select. A uses a Potion or equips/unequips weapon and armor. B, C, or START closes.</p>
+          <p>In Settings, use UP and DOWN to select text speed, music, or sound effects. LEFT and RIGHT change the selected value. A, B, or START returns.</p>
+          <div class="callout">Inside the skill menu, A chooses. B, C, or START cancels.</div>
+        </div>
+      </div>
+      <div class="running-foot"><span>D-PAD MOVE / A ACTION / B STATUS / START SAVE</span><span>3</span></div>
+    </section>
+
+    <section class="manual-page">
+      <div class="running-head"><span>Lantern of Veyra</span><span>03 / The Route</span></div>
+      <h2>Read the landmarks.</h2>
+      <div class="rule"></div>
+      <p class="lead">The dungeon has one locked idea: every safe landmark is part of the route.</p>
+      <div class="landmark-card">
+        <h3>Stonewake landmark chart</h3>
+        <pre>                             N
+
+                 RUNE KEY (80,64)
+                         |
+             PORTAL (64,64) --- SEALED GATE (64,72)
+                                  |
+        TREASURE (48,80) --- CHECKPOINT (80,80)
+                                  |
+                         RELIC ALTAR (64,104)
+
+                             S</pre>
+      </div>
+      <div class="columns">
+        <h3>Route order</h3>
+        <ol>
+          <li><b>Guide:</b> Speak with the Guide in Veyra. Your objective becomes FIND THE LANTERN RELIC.</li>
+          <li><b>Portal:</b> Enter the blue portal at (64,64).</li>
+          <li><b>Rune Key:</b> Search the eastern chamber at (80,64).</li>
+          <li><b>Gate:</b> Use the key at (64,72) to open the lower halls.</li>
+          <li><b>Treasure:</b> Visit (48,80) for steel, supplies, and 25 gold.</li>
+          <li><b>Checkpoint:</b> Touch (80,80) to restore HP/MP and save.</li>
+          <li><b>Altar:</b> Reach (64,104) after every lower-hall landmark is complete.</li>
+          <li><b>Home:</b> Defeat the Ash Dragon, return north, and speak with the Guide.</li>
+        </ol>
+        <div class="callout">The pause screen shows your map position and the next navigation destination.</div>
+        <h3>Town markers</h3>
+        <p><b>G GUIDE</b> starts and completes the quest. <b>W WATCHER</b> gives advice. <b>S SHOP</b> sells equipment and Potions. <b>I INN</b> restores HP and MP for 10 gold.</p>
+      </div>
+      <div class="running-foot"><span>Use A near a landmark</span><span>4</span></div>
+    </section>
+
+    <section class="manual-page">
+      <div class="running-head"><span>Lantern of Veyra</span><span>04 / Battlecraft</span></div>
+      <h2>Steel and spellwork.</h2>
+      <div class="rule"></div>
+      <p>Normal encounters occur only in Stonewake. The upper halls are calmer than the lower halls. After four movement steps, an encounter may occur; if luck stays quiet, an encounter is forced by the eighth step.</p>
+      <p>Landmark areas are safe and reset the danger meter. The upper halls have a 10 percent chance after the minimum step count. The lower halls have an 18 percent chance.</p>
+      <div class="page-split">
+        <div>
+          <h3>Damage</h3>
+          <p>Basic damage is attack minus defense, with a 0-2 damage swing. Damage never falls below 1. A critical hit has a 1 in 16 chance and doubles the result. Guard halves the next enemy hit, rounding up.</p>
+          <h3>Skills and recovery</h3>
+          <table>
+            <tr><th>Move</th><th>Cost</th><th>Effect</th></tr>
+            <tr><td>Heal</td><td>3 MP</td><td>8 + 2 per level HP</td></tr>
+            <tr><td>Power Strike</td><td>4 MP</td><td>Twice ATK plus level before defense</td></tr>
+            <tr><td>Potion</td><td>-</td><td>15 HP</td></tr>
+            <tr><td>Inn</td><td>10 G</td><td>Full HP and MP</td></tr>
+            <tr><td>Checkpoint</td><td>-</td><td>Full HP/MP and save</td></tr>
+          </table>
+        </div>
+        <div>
+          <h3>Enemies</h3>
+          <table>
+            <tr><th>Enemy</th><th>Lv</th><th>HP</th><th>ATK</th><th>DEF</th></tr>
+            <tr><td>Moon Slime</td><td>1</td><td>10</td><td>2</td><td>1</td></tr>
+            <tr><td>Bone Sentry</td><td>2</td><td>25</td><td>6</td><td>4</td></tr>
+            <tr><td>Ash Dragon</td><td>4</td><td>60</td><td>12</td><td>7</td></tr>
+          </table>
+          <h3>Traits</h3>
+          <ul>
+            <li><b>Moon Slime:</b> regenerates up to 3 HP before its turn.</li>
+            <li><b>Bone Sentry:</b> can inflict Poison for 3 turns; Poison deals 2 damage each turn.</li>
+            <li><b>Ash Dragon:</b> can inflict Burn for 2 turns; Burn deals 3 damage each turn.</li>
+          </ul>
+          <p>Run is clamped between 25 and 90 percent and never works against the boss.</p>
+        </div>
+      </div>
+      <div class="running-foot"><span>Keep the checkpoint in sight</span><span>5</span></div>
+    </section>
+
+    <section class="manual-page">
+      <div class="running-head"><span>Lantern of Veyra</span><span>05 / Relic Index</span></div>
+      <h2>Pack light. Hit hard.</h2>
+      <div class="rule"></div>
+      <table>
+        <tr><th>Item</th><th>Kind</th><th>Effect</th><th>Price / reward</th></tr>
+        <tr><td>Potion</td><td>Consumable</td><td>Restore 15 HP. Maximum stock is 99.</td><td>5 G</td></tr>
+        <tr><td>Bronze Sword</td><td>Weapon</td><td>+2 ATK; equipped at the start.</td><td>Starting gear</td></tr>
+        <tr><td>Iron Sword</td><td>Weapon</td><td>+4 ATK; first chest reward.</td><td>50 G / chest</td></tr>
+        <tr><td>Leather Armor</td><td>Armor</td><td>+1 DEF; equipped at the start.</td><td>Starting gear</td></tr>
+        <tr><td>Chain Armor</td><td>Armor</td><td>+3 DEF; second chest reward.</td><td>45 G / chest</td></tr>
+        <tr><td>Lantern Relic</td><td>Key item</td><td>The light Veyra needs.</td><td>Story item</td></tr>
+        <tr><td>Rune Key</td><td>Key item</td><td>Opens the Stonewake gate.</td><td>Story item</td></tr>
+      </table>
+      <div class="page-split">
+        <div>
+          <h3>Chest order</h3>
+          <p>The Stonewake chest gives the best reward you still lack:</p>
+          <ol>
+            <li>Iron Sword, if you do not have one.</li>
+            <li>Chain Armor, if the sword is already in your pack.</li>
+            <li>Three Potions, if both pieces of steel are already yours.</li>
+          </ol>
+          <p>Every first opening also gives 25 gold.</p>
+        </div>
+        <div>
+          <h3>Equipment rule</h3>
+          <p>Buying a weapon or armor does not equip it automatically. Open Inventory and press A on the item you want. Press A again to remove it. One weapon and one armor can be equipped at a time.</p>
+          <div class="callout">The stronger steel is not a shortcut. It is a reason to go back down prepared.</div>
+        </div>
+      </div>
+      <div class="running-foot"><span>One pack / one light</span><span>6</span></div>
+    </section>
+
+    <section class="manual-page">
+      <div class="running-head"><span>Lantern of Veyra</span><span>06 / The Guardian</span></div>
+      <h2>The Ash Dragon.</h2>
+      <div class="rule"></div>
+      <p class="lead">The relic altar will not wake until the route is complete.</p>
+      <p>At the altar, press A after the Rune Key, gate, treasure, and checkpoint are all recorded. The Ash Dragon will rise. There is no escape from this battle.</p>
+      <table>
+        <tr><th>Phase</th><th>Level</th><th>HP</th><th>ATK</th><th>DEF</th><th>Reward</th></tr>
+        <tr><td>Ash Dragon</td><td>5</td><td>80</td><td>14</td><td>8</td><td>150 EXP, 100 G</td></tr>
+        <tr><td>Enraged</td><td>5</td><td>80 max</td><td>18</td><td>9</td><td>Same</td></tr>
+      </table>
+      <div class="page-split">
+        <div>
+          <h3>When the flame turns</h3>
+          <p>When the boss reaches half HP, it enters the enraged phase before its next attack. Its ATK rises by 4, its DEF rises by 1, and its Burn lasts three turns instead of two.</p>
+        </div>
+        <div>
+          <h3>Preparation card</h3>
+          <ul>
+            <li>Touch the checkpoint first.</li>
+            <li>Carry Potions if your stock is low.</li>
+            <li>Use the Iron Sword and Chain Armor when available.</li>
+            <li>Save before the altar.</li>
+            <li>Guard when a burned or weakened hero needs one more turn.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout">After victory, return north through the open gate. The town portal is still your road home.</div>
+      <div class="running-foot"><span>Save before the altar</span><span>7</span></div>
+    </section>
+
+    <section class="manual-page">
+      <div class="running-head"><span>Lantern of Veyra</span><span>07 / Saving</span></div>
+      <h2>Write the light down.</h2>
+      <div class="rule"></div>
+      <p>Press START on the field to write your progress to cartridge SRAM. The game also saves after important interactions, battles, the Stonewake checkpoint, returning to Veyra, and changes made in the pause menus.</p>
+      <p>If the hero falls in battle, the adventure ends with <b>ALL PROGRESS LOST</b>. Press START to return to the title screen. Save before entering the lower halls and use the checkpoint before the altar.</p>
+      <div class="page-split">
+        <div>
+          <h3>Valid save data</h3>
+          <p>A valid save stores the current map, position, stats, inventory, equipment, story flags, and audio settings. It includes a version and checksum so invalid data is rejected.</p>
+          <div class="callout">If an emulator asks whether to enable save RAM, enable it.</div>
+        </div>
+        <div>
+          <h3>Level growth</h3>
+          <table>
+            <tr><th>Reach</th><th>Total EXP</th></tr>
+            <tr><td>Level 2</td><td>10</td></tr>
+            <tr><td>Level 3</td><td>40</td></tr>
+            <tr><td>Level 4</td><td>90</td></tr>
+            <tr><td>Level 5</td><td>160</td></tr>
+            <tr><td>Level 6</td><td>250</td></tr>
+            <tr><td>Level 7</td><td>360</td></tr>
+            <tr><td>Level 8</td><td>490</td></tr>
+            <tr><td>Level 9</td><td>640</td></tr>
+            <tr><td>Level 10</td><td>810</td></tr>
+          </table>
+        </div>
+      </div>
+      <h3>At every level</h3>
+      <p>Maximum HP rises by 5, maximum MP by 2, base ATK by 2, and base DEF by 1. A level-up restores HP and MP completely. The level cap is 10.</p>
+      <div class="running-foot"><span>SRAM / checksum / level cap 10</span><span>8</span></div>
+    </section>
+
+    <section class="manual-page end-card">
+      <div>
+        <img class="cover-mark" src="lantern-mark.svg" alt="Lantern of Veyra mark">
+        <h2>Carry it home.</h2>
+        <p>Lantern of Veyra is an original SGDK project designed around 8x8 indexed tiles, short text windows, PSG-style phrases, compact SRAM saves, and a readable cartridge map.</p>
+        <p>Game code, documentation, and project-authored assets are released under the MIT License. SGDK and its startup source retain their own upstream attribution; see THIRD_PARTY_NOTICES.md.</p>
+        <p>THE LONG DUSK ENDS WHERE YOUR ROAD BEGINS.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

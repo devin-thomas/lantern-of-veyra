@@ -1,0 +1,29 @@
+# SGDK outputs and generated resource intermediates
+out/
+res/resources.h
+res/resources.rs
+res/resources.d
+res/resources-debug.h
+res/resources-debug.rs
+res/bg.png
+
+# Local Python and editor state
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.vscode/
+.idea/
+
+# Scratch planning and private source material
+.scratch/
+*.local
+*.private
+
+# Test executable created temporarily by tests/run_host_smoke.ps1
+tests/host_smoke.exe
+
+# Local visual QA captures
+.qa/

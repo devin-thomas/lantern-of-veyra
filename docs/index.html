@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The digital field guide for Lantern of Veyra, an original Sega Genesis homebrew RPG.">
+  <link rel="icon" href="lantern-mark.svg" type="image/svg+xml">
+  <title>Lantern of Veyra | Digital Field Guide</title>
+  <link rel="stylesheet" href="site.css">
+  <noscript><style>#route-content[hidden] { display: block; }</style></noscript>
+</head>
+<body>
+  <div class="reading-progress" aria-hidden="true"></div>
+  <div class="page-wrap">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Lantern of Veyra home">
+        <span class="brand-mark" aria-hidden="true">LV</span>
+        <span>Lantern of Veyra</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="site-nav" id="site-nav" aria-label="Manual sections">
+        <a href="#story">Lore</a>
+        <a href="#controls">Controls</a>
+        <a href="#route">Route</a>
+        <a href="#relic-index">Relic index</a>
+        <a href="print-manual.html">Print manual</a>
+        <a href="Lantern-of-Veyra-Players-Manual.pdf">PDF</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <h1 id="hero-title"><span>Lantern</span><em>of Veyra</em></h1>
+          <p class="hero-deck">Restore the light to a town locked in dusk. Read the stone. Spend your gold. Make it home.</p>
+          <div class="hero-actions">
+            <a class="button" href="#story">Begin reading</a>
+            <button class="text-button" type="button" data-spoiler-toggle aria-expanded="false" aria-controls="route-content">Show spoiler route</button>
+          </div>
+          <p class="hero-stamp">Original homebrew / 16-bit field guide / SRAM save</p>
+        </div>
+
+        <div class="hero-visual" aria-label="The hero carrying a lantern through Stonewake">
+          <div class="visual-frame">
+            <img class="lantern-mark" src="lantern-mark.svg" alt="">
+            <img class="hero-sprite" src="../res/hero.png" alt="Pixel hero sprite">
+            <img class="dragon-sprite" src="../res/dragon.png" alt="Pixel Ash Dragon sprite">
+            <div class="visual-caption">
+              <span>Stonewake</span>
+              <span>64,64 -> 64,104</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="story-section" id="story" aria-labelledby="story-title">
+        <div>
+          <p class="section-rule">01 / Lore</p>
+          <h2 id="story-title">The night that stayed</h2>
+        </div>
+        <div class="story-copy">
+          <p>Veyra was built where three old roads meet. For generations, its watchfires were fed by a lantern recovered from the ruins beneath the hill. Then the lantern went dark.</p>
+          <p>The darkness did not pass with the morning. It stayed. Crops stopped growing, travelers stopped coming, and the town learned to measure time by the coldness of the sky.</p>
+          <p>The old Guide believes the lantern's heart is still below the sealed Stonewake dungeon. The ruin is guarded by an Ash Dragon and closed behind a rune gate. You are the one traveler willing to take the road down, find the lantern relic, and bring its light back to Veyra.</p>
+          <blockquote class="story-quote">"The stone remembers the road. The lantern remembers the dawn."<br>-- The Watcher</blockquote>
+        </div>
+      </section>
+
+      <section class="controls-section" id="controls" aria-labelledby="controls-title">
+        <div class="control-copy">
+          <p class="section-rule">02 / Controls</p>
+          <h2 id="controls-title">Every button has a job.</h2>
+          <p><strong>Field rule 01</strong>Walk close to a marker. The A button does the rest.</p>
+          <p><strong>Field rule 02</strong>Save before you cross a threshold. The lower halls do not forgive a careless hero.</p>
+        </div>
+        <div class="controller-deck" aria-label="Controller controls">
+          <div class="controller-shape" aria-hidden="true">
+            <span class="dpad-piece up">^</span>
+            <span class="dpad-piece left">&lt;</span>
+            <span class="dpad-piece center">+</span>
+            <span class="dpad-piece right">&gt;</span>
+            <span class="dpad-piece down">v</span>
+          </div>
+          <div>
+            <div class="face-buttons" aria-hidden="true">
+              <span class="face-button">A</span>
+              <span class="face-button">B</span>
+              <span class="face-button">C</span>
+              <span class="face-button start">START</span>
+            </div>
+            <ul class="control-list">
+              <li><b>D-PAD</b><span>Move four ways</span></li>
+              <li><b>A</b><span>Talk / inspect / act</span></li>
+              <li><b>B</b><span>Pause / status</span></li>
+              <li><b>START</b><span>Save on the field</span></li>
+              <li><b>C</b><span>Settings from pause</span></li>
+              <li><b>B C START</b><span>Confirm battle / close</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="route-section" id="route" aria-labelledby="route-title">
+        <div class="route-heading">
+          <div>
+            <p class="section-rule">03 / Stonewake</p>
+            <h2 id="route-title">Read the landmarks.</h2>
+          </div>
+          <p>The dungeon has one locked idea: every safe landmark is part of the route. The pause screen gives you the next destination.</p>
+        </div>
+        <div class="route-gate">
+          <p>Full route, coordinates, and boss preparation are hidden until you ask for them.</p>
+          <button class="button" type="button" data-spoiler-toggle aria-expanded="false" aria-controls="route-content">Show spoiler route</button>
+        </div>
+        <div class="route-content" id="route-content" hidden>
+          <div class="landmark-map" aria-label="Stonewake landmark diagram">
+            <span class="landmark key">Rune key<br>(80,64)</span>
+            <span class="landmark portal">Portal<br>(64,64)</span>
+            <span class="landmark gate">Sealed gate<br>(64,72)</span>
+            <span class="landmark treasure">Treasure<br>(48,80)</span>
+            <span class="landmark checkpoint">Checkpoint<br>(80,80)</span>
+            <span class="landmark altar">Relic altar<br>(64,104)</span>
+          </div>
+          <ol class="route-steps">
+            <li><div><h3>Talk to the Guide.</h3><p>Speak with the G GUIDE marker in Veyra. Your objective becomes FIND THE LANTERN RELIC.</p></div></li>
+            <li><div><h3>Take the crossroads portal.</h3><p>The blue portal is at map position (64,64). Stonewake begins on the other side.</p></div></li>
+            <li><div><h3>Find the Rune Key.</h3><p>Search the eastern chamber at (80,64), then return to the sealed gate.</p></div></li>
+            <li><div><h3>Open the lower halls.</h3><p>Use the key at (64,72). The gate changes from a wall to a walkable stone threshold.</p></div></li>
+            <li><div><h3>Claim the chest.</h3><p>At (48,80), take the best reward still missing from your pack, plus 25 gold.</p></div></li>
+            <li><div><h3>Touch the checkpoint.</h3><p>The stone at (80,80) restores HP and MP and records a save.</p></div></li>
+            <li><div><h3>Wake the altar.</h3><p>At (64,104), press A after every lower-hall landmark is complete. The Ash Dragon is waiting.</p></div></li>
+            <li><div><h3>Carry the light home.</h3><p>After victory, return north through the open gate, step onto the portal, and speak with the Guide in Veyra.</p></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="index-section" id="relic-index" aria-labelledby="index-title">
+        <div class="index-intro">
+          <div>
+            <p class="section-rule">04 / Relic index</p>
+            <h2 id="index-title">Pack light. Hit hard.</h2>
+          </div>
+          <p>The numbers are part of the spell. Equipment bonuses stack onto your base stats; the stronger steel is waiting below.</p>
+        </div>
+        <div class="index-table-wrap">
+          <table class="index-table">
+            <thead><tr><th>Entry</th><th>Type</th><th>Effect</th><th>Price / reward</th></tr></thead>
+            <tbody>
+              <tr><td>Potion</td><td>Consumable</td><td>Restore 15 HP. Maximum stock: 99.</td><td>5 G</td></tr>
+              <tr><td>Bronze Sword</td><td>Weapon</td><td>+2 ATK. Equipped at the start.</td><td>Starting gear</td></tr>
+              <tr><td>Iron Sword</td><td>Weapon</td><td>+4 ATK. The first chest reward.</td><td>50 G / chest</td></tr>
+              <tr><td>Leather Armor</td><td>Armor</td><td>+1 DEF. Equipped at the start.</td><td>Starting gear</td></tr>
+              <tr><td>Chain Armor</td><td>Armor</td><td>+3 DEF. The second chest reward.</td><td>45 G / chest</td></tr>
+              <tr><td>Lantern Relic</td><td>Key item</td><td>The light Veyra needs. Carry it home.</td><td>Story item</td></tr>
+              <tr><td>Rune Key</td><td>Key item</td><td>Opens the Stonewake gate.</td><td>Story item</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="notes-section" id="cartridge-notes" aria-labelledby="notes-title">
+        <div>
+          <p class="section-rule">05 / Cartridge notes</p>
+          <h2 id="notes-title">Small map.<br>Deep dusk.</h2>
+        </div>
+        <div class="notes-copy">
+          <p>Lantern of Veyra is built around the habits of a 16-bit cartridge RPG: 8x8 indexed tiles, short text windows, four-channel PSG-style phrases, a compact SRAM save, and a map that can be read at a glance.</p>
+          <div class="note-strip" aria-label="Game specifications">
+            <div class="note-cell"><strong>View</strong><span>320 x 224</span></div>
+            <div class="note-cell"><strong>Cap</strong><span>LV 10</span></div>
+            <div class="note-cell"><strong>Save</strong><span>SRAM</span></div>
+          </div>
+          <div class="asset-board">
+            <figure><img src="../res/tileset.png" alt="Indexed grass, path, stone, portal, and wall tiles"><figcaption>8x8 tile language</figcaption></figure>
+            <figure><img src="../res/dragon.png" alt="Pixel Ash Dragon sprite"><figcaption>Relic guardian</figcaption></figure>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Lantern of Veyra / The Long Dusk ends where your road begins.</p>
+      <p><a href="manual.md">Canonical manual text</a> / <a href="print-manual.html">Print manual</a> / <a href="Lantern-of-Veyra-Players-Manual.pdf">PDF</a> / <a href="../README.md">Source project</a></p>
+    </footer>
+  </div>
+  <script src="site.js"></script>
+</body>
+</html>

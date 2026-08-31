@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Lantern of Veyra mark</title>
+  <desc id="desc">A geometric lantern glowing above a small horizon.</desc>
+  <rect width="256" height="256" fill="#14293d"/>
+  <path d="M42 210h172M62 193h132" fill="none" stroke="#72836a" stroke-width="6"/>
+  <path d="M82 76h92l18 31v79H64v-79z" fill="#d76235" stroke="#efe9d8" stroke-width="7"/>
+  <path d="M75 105h106M82 186h92M92 76l10-27h52l10 27" fill="none" stroke="#efe9d8" stroke-width="7"/>
+  <rect x="100" y="118" width="56" height="50" fill="#f0c864" stroke="#14293d" stroke-width="7"/>
+  <path d="M128 128v30M112 143h32" stroke="#d76235" stroke-width="7"/>
+  <circle cx="40" cy="60" r="5" fill="#f0c864"/>
+  <circle cx="206" cy="48" r="4" fill="#f0c864"/>
+  <circle cx="218" cy="91" r="3" fill="#72836a"/>
+</svg>
