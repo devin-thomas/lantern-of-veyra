@@ -3,6 +3,7 @@
 #include <string.h>
 
 #include "genesis.h"
+#include "sgdkstub/sgdkstub.h"
 #include "map.h"
 #include "battle.h"
 #include "economy.h"
@@ -16,149 +17,21 @@
 #include "pause.h"
 #include "settings.h"
 
-u16 test_joy_state;
-s16 test_horizontal_scroll;
-s16 test_vertical_scroll;
-size_t test_tile_write_count;
-u16 test_max_tile_y;
-u8 test_psg_log[256];
-size_t test_psg_log_length;
-static u16 joy_sequence[32];
-static size_t joy_sequence_length;
-static size_t joy_sequence_index;
-static u16 first_map_tile;
-static u8 test_sram[512];
-
-u16 JOY_readJoypad(u16 joy) {
-    (void) joy;
-    if (joy_sequence_index < joy_sequence_length) {
-        return joy_sequence[joy_sequence_index++];
-    }
-    return test_joy_state;
-}
-
-void SYS_doVBlankProcess(void) {}
-void VDP_setHorizontalScroll(VDPPlane plane, s16 value) {
-    (void) plane;
-    test_horizontal_scroll = value;
-}
-void VDP_setVerticalScroll(VDPPlane plane, s16 value) {
-    (void) plane;
-    test_vertical_scroll = value;
-}
-void VDP_drawText(const char *text, u16 x, u16 y) {
-    (void) text;
-    (void) x;
-    (void) y;
-}
-void VDP_clearPlane(VDPPlane plane, bool wait) {
-    (void) plane;
-    (void) wait;
-}
-void PSG_write(u8 value) {
-    if (test_psg_log_length < sizeof(test_psg_log)) {
-        test_psg_log[test_psg_log_length++] = value;
-    }
-}
-void PSG_reset(void) {
-    for (u8 channel = 0; channel < 4; channel++) {
-        PSG_write(0x80 | (channel << 5));
-        PSG_write(0);
-        PSG_write(0x90 | (channel << 5) | 0x0F);
-    }
-}
-void PSG_setEnvelope(u8 channel, u8 value) {
-    PSG_write(0x90 | ((channel & 3) << 5) | (value & 0x0F));
-}
-void PSG_setTone(u8 channel, u16 value) {
-    PSG_write(0x80 | ((channel & 3) << 5) | (value & 0x0F));
-    PSG_write((value >> 4) & 0x3F);
-}
-void PSG_setNoise(u8 type, u8 frequency) {
-    PSG_write(0xE0 | ((type & 1) << 2) | (frequency & 3));
-}
-void SRAM_enable(void) {}
-void SRAM_enableRO(void) {}
-void SRAM_disable(void) {}
-u8 SRAM_readByte(u32 offset) {
-    return offset < sizeof(test_sram) ? test_sram[offset] : 0;
-}
-void SRAM_writeByte(u32 offset, u8 value) {
-    if (offset < sizeof(test_sram)) test_sram[offset] = value;
-}
-void VDP_setTileMapXY(VDPPlane plane, u16 tile, u16 x, u16 y) {
-    (void) plane;
-    (void) tile;
-    (void) x;
-    test_tile_write_count++;
-    if (y > test_max_tile_y) test_max_tile_y = y;
-    if (x == 0 && y == 0) first_map_tile = tile;
-}
-
+/* The Genesis calls are the sgdk-host-stub package's recorder (sgs). */
 static void reset_render_trace(void) {
-    test_horizontal_scroll = 0;
-    test_vertical_scroll = 0;
-    test_tile_write_count = 0;
-    test_max_tile_y = 0;
+    sgs.hscroll[BG_B] = 0;
+    sgs.vscroll[BG_B] = 0;
+    sgs.tile_writes = 0;
+    sgs.max_tile_y = 0;
 }
 
 static void reset_psg_trace(void) {
-    test_psg_log_length = 0;
-}
-
-static int psg_trace_has_tone(u8 channel) {
-    for (size_t i = 0; i + 1 < test_psg_log_length; i++) {
-        const u8 command = test_psg_log[i];
-        if ((command & 0xF0) == 0x80 &&
-            ((command >> 5) & 0x03) == channel) {
-            return 1;
-        }
-    }
-    return 0;
-}
-
-static int psg_trace_has_envelope(u8 channel, u8 value) {
-    for (size_t i = 0; i < test_psg_log_length; i++) {
-        const u8 command = test_psg_log[i];
-        if ((command & 0x90) == 0x90 && (command & 0x10) != 0 &&
-            ((command >> 5) & 0x03) == channel &&
-            (command & 0x0F) == value) {
-            return 1;
-        }
-    }
-    return 0;
-}
-
-static int psg_trace_has_multiple_tones(u8 channel) {
-    u16 first_tone = 0;
-    int tone_count = 0;
-
-    for (size_t i = 0; i + 1 < test_psg_log_length; i++) {
-        const u8 command = test_psg_log[i];
-        if ((command & 0xF0) != 0x80 ||
-            ((command >> 5) & 0x03) != channel) {
-            continue;
-        }
-
-        const u16 tone = (u16) (command & 0x0F) |
-                         ((u16) (test_psg_log[i + 1] & 0x3F) << 4);
-        if (tone_count == 0) {
-            first_tone = tone;
-        } else if (tone != first_tone) {
-            return 1;
-        }
-        tone_count++;
-        i++;
-    }
-
-    return 0;
+    sgs.psg_log_length = 0;
 }
 
 static void set_joy_sequence(const u16 *sequence, size_t length) {
-    for (size_t i = 0; i < length; i++) joy_sequence[i] = sequence[i];
-    joy_sequence_length = length;
-    joy_sequence_index = 0;
-    test_joy_state = 0;
+    sgs_joy_set(JOY_1, 0);
+    sgs_joy_script(JOY_1, sequence, (u16) length);
 }
 
 static int expect_true(const char *name, int condition) {
@@ -205,13 +78,13 @@ int main(void) {
     const u16 inventory_menu[] = {0, BUTTON_DOWN, 0, BUTTON_A, 0, BUTTON_B};
     const u16 shop_menu[] = {0, BUTTON_A, 0, BUTTON_A, 0, BUTTON_B};
 
-    first_map_tile = 0;
+    sgs.tiles[BG_B][0][0] = 0;
     map_init();
     set_joy_sequence(right, 1);
     map_update_player();
     failures += expect_true("directional input moves the player", player.x > 64);
     failures += expect_true("map tiles use the reserved user VRAM base",
-                            first_map_tile == TILE_USER_INDEX + 11);
+                            sgs.tiles[BG_B][0][0] == TILE_USER_INDEX + 11);
     failures += expect_true("town movement never triggers encounters",
                             !map_take_encounter_trigger());
 
@@ -321,15 +194,15 @@ int main(void) {
     set_joy_sequence(NULL, 0);
     map_update_player();
     failures += expect_true("vertical scroll follows the camera",
-                            test_vertical_scroll == camera_y);
+                            sgs.vscroll[BG_B] == camera_y);
     failures += expect_true("horizontal scroll follows the camera",
-                            test_horizontal_scroll == -camera_x);
+                            sgs.hscroll[BG_B] == -camera_x);
     failures += expect_true("map rendering stays inside the 64x32 plane",
-                            test_max_tile_y < 32);
+                            sgs.max_tile_y < 32);
     reset_render_trace();
     map_update_player();
     failures += expect_true("map tiles are not redrawn every frame",
-                            test_tile_write_count == 0);
+                            sgs.tile_writes == 0);
     const s16 previous_y = player.y;
     const u16 down[] = {BUTTON_DOWN};
     set_joy_sequence(down, 1);
@@ -494,15 +367,15 @@ int main(void) {
     reset_psg_trace();
     audio_update();
     failures += expect_true("music starts with a note",
-                            psg_trace_has_tone(0));
+                            sgs_psg_has_tone(0));
     for (int i = 0; i < 50; i++) audio_update();
     failures += expect_true("music advances to another note",
-                            psg_trace_has_multiple_tones(0));
+                            sgs_psg_tone_changed(0));
     audio_set_theme(THEME_BATTLE);
     reset_psg_trace();
     audio_update();
     failures += expect_true("battle theme starts with a note",
-                            psg_trace_has_tone(0));
+                            sgs_psg_has_tone(0));
     settings_reset_defaults();
     set_joy_sequence(settings_speed, 4);
     failures += expect_true("settings adjust and apply text speed",
@@ -522,11 +395,11 @@ int main(void) {
     play_sfx_select();
     for (int i = 0; i < 4; i++) audio_update();
     failures += expect_true("select sound fades out",
-                            psg_trace_has_envelope(1, PSG_ENVELOPE_MIN));
+                            sgs_psg_has_envelope(1, PSG_ENVELOPE_MIN));
     play_sfx_hit();
     for (int i = 0; i < 5; i++) audio_update();
     failures += expect_true("hit sound fades out",
-                            psg_trace_has_envelope(3, PSG_ENVELOPE_MIN));
+                            sgs_psg_has_envelope(3, PSG_ENVELOPE_MIN));
 
     battle_start(1);
     set_joy_sequence(confirm, 2);
@@ -683,7 +556,7 @@ int main(void) {
                             ui_get_text_speed() == SETTINGS_TEXT_SPEED_FAST &&
                             !audio_get_music_enabled() &&
                             audio_get_sfx_enabled());
-    test_sram[0] ^= 0x01;
+    sgs.sram[0] ^= 0x01;
     failures += expect_true("corrupt save is rejected",
                             !save_read(&save_loaded));
     save_clear();
